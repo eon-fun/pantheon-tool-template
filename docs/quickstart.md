@@ -34,8 +34,8 @@ You **must** rename the `example_tool` directory and all references to match you
    - In `your_tool_name/README.md`: Replace all mentions of `example_tool` with `your_tool_name`
 
 3. **Update CI workflows:**
-   - In `.github/workflows/lint.yml`: Change `ruff check example_tool` to `ruff check your_tool_name` and `ruff format --check example_tool` to `ruff format --check your_tool_name`
-   - In `.github/workflows/test.yml`: Change `pip install -e ./example_tool[dev]` to `pip install -e ./your_tool_name[dev]` and `pytest example_tool/tests` to `pytest your_tool_name/tests`
+   - In `.github/workflows/lint.yml`: Change `poetry run ruff check .` and `poetry run ruff format --check .` to use your tool name in the working-directory
+   - In `.github/workflows/test.yml`: Change `working-directory: example_tool` to `working-directory: your_tool_name` and update poetry commands accordingly
 
 ## Step 4: Install Dependencies
 
