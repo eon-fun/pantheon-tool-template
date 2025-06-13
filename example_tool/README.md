@@ -18,14 +18,18 @@ This tool serves as a reference implementation and starting point for building m
 
 ```
 example_tool/
-├── example_tool/
-│   ├── __init__.py          # Package exports
-│   ├── main.py              # Core business logic
-│   └── ray_entrypoint.py    # Ray execution wrapper
-├── tests/
-│   └── test_example.py      # Test suite
-├── pyproject.toml           # Configuration and dependencies
-└── README.md               # This documentation
+├── Makefile # Common development commands
+├── poetry.lock # Poetry lockfile with pinned dependencies
+├── pyproject.toml # Project configuration and dependencies
+├── README.md # Tool-specific documentation
+├── docs/ # Additional documentation or API specs
+├── src/
+│ └── example_tool/
+│ ├── init.py # Package exports
+│ ├── main.py # Core business logic
+│ └── ray_entrypoint.py # Ray execution wrapper
+└── tests/
+└── test_example.py # Test suite
 ```
 
 ### Core Components
@@ -85,7 +89,7 @@ def main(*args, **kwargs):
 
 ```bash
 # Install with Poetry (recommended)
-poetry install
+poetry run make install
 
 # Or install with pip
 pip install -e .
@@ -95,7 +99,7 @@ pip install -e .
 
 ```bash
 # Run all tests
-poetry run pytest
+poetry run make test
 
 # Run with coverage
 poetry run pytest --cov=example_tool --cov-report=html
@@ -168,13 +172,10 @@ This entry point allows the Pantheon platform to discover and execute your tool.
 
 ```bash
 # Format code
-poetry run ruff format .
+poetry run make format
 
 # Check for issues
-poetry run ruff check .
-
-# Fix auto-fixable issues
-poetry run ruff check --fix .
+poetry run make lint
 ```
 
 ## 📈 Performance Considerations
