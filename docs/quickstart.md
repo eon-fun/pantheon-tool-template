@@ -21,17 +21,11 @@ cd your-new-tool-repo
 
 You **must** rename the `example_tool` directory and all references to match your new tool name:
 
-1. **Rename the directory:**
-   ```bash
-   mv example_tool your_tool_name
-   mv your_tool_name/example_tool your_tool_name/your_tool_name
-   ```
-
-2. **Update all code references:**
-   - In `your_tool_name/your_tool_name/ray_entrypoint.py`: Change `from example_tool.main import main as tool_main` to `from your_tool_name.main import main as tool_main`
-   - In `your_tool_name/tests/test_example.py`: Change `import example_tool` to `import your_tool_name` and update the test calls
-   - In `your_tool_name/pyproject.toml`: Change `name = "example_tool"` to `name = "your_tool_name"` and update the entry point
-   - In `your_tool_name/README.md`: Replace all mentions of `example_tool` with `your_tool_name`
+1. **Update all code references:**
+   - In `your_tool_name/ray_entrypoint.py`: Change `from example_tool.main import main as tool_main` to `from your_tool_name.main import main as tool_main`
+   - In `tests/test_example.py`: Change `import example_tool` to `import your_tool_name` and update the test calls
+   - In `pyproject.toml`: Change `name = "example_tool"` to `name = "your_tool_name"` and update the entry point
+   - In `README.md`: Replace all mentions of `example_tool` with `your_tool_name`
 
 3. **Update CI workflows:**
    - In `.github/workflows/lint.yml`: Change `poetry run ruff check .` and `poetry run ruff format --check .` to use your tool name in the working-directory
@@ -42,7 +36,6 @@ You **must** rename the `example_tool` directory and all references to match you
 Navigate to your tool directory and install in development mode:
 
 ```bash
-cd your_tool_name
 pip install -e .[dev]
 ```
 
@@ -62,8 +55,8 @@ You should see all tests pass successfully.
 
 Now you can start developing your actual tool functionality:
 
-1. **Edit `your_tool_name/main.py`**: Implement your core tool logic
-2. **Update `your_tool_name/ray_entrypoint.py`**: Modify input/output models as needed
+1. **Edit `main.py`**: Implement your core tool logic
+2. **Update `ray_entrypoint.py`**: Modify input/output models as needed
 3. **Write tests**: Add comprehensive tests in `tests/`
 4. **Update documentation**: Modify the README.md to describe your tool
 

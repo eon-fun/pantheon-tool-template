@@ -37,15 +37,14 @@ pantheon-tool-template/
 │   └── test.yml               # Automated testing (pytest)
 ├── docs/                      # Documentation
 │   └── quickstart.md          # Step-by-step setup guide
-├── example_tool/              # Your tool implementation
+├── src/                       # Your tool implementation
 │   ├── example_tool/          # Core tool package
 │   │   ├── __init__.py        # Package initialization
 │   │   ├── main.py            # Core business logic
 │   │   └── ray_entrypoint.py  # Ray distributed execution wrapper
-│   ├── tests/                 # Test suite
-│   │   └── test_example.py    # Unit tests
-│   ├── pyproject.toml         # Dependencies and configuration
-│   └── README.md              # Tool-specific documentation
+├── tests/                     # Test suite
+│   └── test_example.py        # Unit tests
+├── pyproject.toml             # Dependencies and configuration
 ├── LICENSE                    # MIT License
 └── README.md                  # This file
 ```
@@ -138,7 +137,7 @@ your-tool = "your_tool.ray_entrypoint:main"
 
 ```bash
 # Install dependencies
-cd your_tool && poetry install
+poetry install
 
 # Run tests
 poetry run pytest
